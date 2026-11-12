@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LavaFácil – Demonstração</title>
+<style>
+:root{--navy:#0B3C5D;--teal:#1D8A99;--light:#D9EEF2;--bg:#F3F8FA;--amber:#F2A541;--coral:#E4572E;--green:#4E9A55;--ink:#1B2A36;--mut:#5C6E7B;--line:#DCE6EA;--card:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Calibri,Arial,sans-serif;background:var(--bg);color:var(--ink);display:flex;min-height:100vh}
+aside{width:236px;background:var(--navy);color:#fff;padding:18px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:2px 6px 14px}.brand .m{width:42px;height:42px;flex:none}.brand b{font-size:20px;letter-spacing:.2px}.brand b span{color:#5BB8C4}
+.who{font-size:12px;color:#B9D4DF;padding:0 6px 8px}.who select{width:100%;margin-top:4px;background:#0F4C75;color:#fff;border:1px solid #2c6a90;border-radius:8px;padding:7px}
+nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;color:#CFE3EA;padding:10px 12px;border-radius:10px;font:inherit;cursor:pointer}
+nav button:hover{background:#0F4C75}nav button.on{background:var(--teal);color:#fff;font-weight:600}nav .i{width:18px;text-align:center}
+aside .foot{margin-top:auto;font-size:11px;color:#8FB3C2;padding:6px}
+main{flex:1;padding:26px 30px;max-width:1180px}
+h1{margin:0 0 4px;font-size:26px;color:var(--navy)}.sub{color:var(--mut);margin:0 0 20px}
+.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1.5fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi small{color:var(--mut);display:block}.kpi b{font-size:28px;color:var(--navy)}.kpi em{display:block;margin-top:2px;font-style:normal;font-size:12px;color:var(--green)}
+table{width:100%;border-collapse:collapse}th{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid #EEF3F5;font-size:14px}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600}
+.s-rec{background:#E7F1FF;color:#1F5FBF}.s-lav{background:#FFF1D6;color:#9A6200}.s-pro{background:#E4F4F6;color:#14707E}.s-pro2{background:#EDE7FF;color:#5B3FB5}.s-ok{background:#E2F3E4;color:#2F7A38}.s-ent{background:#E8ECEF;color:#4B5B66}
+.s-ab{background:#FFE6DF;color:#B83C1B}.s-and{background:#FFF1D6;color:#9A6200}
+button.b,.b{background:var(--teal);color:#fff;border:0;border-radius:9px;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer}.b:hover{background:#14707E}.b.sec{background:#fff;color:var(--teal);border:1px solid var(--teal)}.b.sm{padding:5px 10px;font-size:13px}
+input,select,textarea{font:inherit;padding:9px 10px;border:1px solid #C9D8DE;border-radius:9px;width:100%;background:#fff}label{font-size:13px;color:var(--mut);display:block;margin:10px 0 4px}
+.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}.row .fix{flex:none}
+.bar{height:10px;background:#E6EEF1;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal)}
+.chart{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:10px}.chart div{flex:1;background:var(--light);border-radius:8px 8px 0 0;position:relative;min-height:6px}.chart div:last-child{background:var(--teal)}.chart span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:11px;color:var(--mut)}.chart b{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:11px;color:var(--navy)}
+.plan{border:2px solid var(--line);border-radius:14px;padding:16px;background:#fff}.plan.cur{border-color:var(--teal);box-shadow:0 0 0 3px #1D8A9922}.plan h3{margin:0;color:var(--navy)}.plan .pr{font-size:28px;font-weight:700;color:var(--teal);margin:6px 0}.plan ul{padding-left:18px;color:var(--mut);font-size:14px;min-height:92px}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:12px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;max-width:320px}.toast.on{opacity:1;transform:none}
+.stop{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff}.stop .n{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}.stop.done{opacity:.6}.stop.done .n{background:var(--green)}.stop div:nth-child(2){flex:1}
+.note{background:#FFF8E8;border:1px solid #F5DDA8;color:#7A5200;padding:10px 12px;border-radius:10px;font-size:13px;margin-bottom:14px}
+.hide{display:none!important}
+@media(max-width:900px){body{flex-direction:column}aside{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap}.g4,.g3,.g2{grid-template-columns:1fr 1fr}main{padding:16px}}
+@media(max-width:600px){.g4,.g3,.g2{grid-template-columns:1fr}}
+</style></head><body>
+<aside>
+  <div class="brand"><div class="m"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <clipPath id="porthole"><circle cx="60" cy="62" r="34"/></clipPath>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F4C75"/><stop offset="1" stop-color="#0B3C5D"/></linearGradient>
+  </defs>
+  <rect x="4" y="4" width="112" height="112" rx="26" fill="url(#bg)"/>
+  <circle cx="60" cy="62" r="40" fill="#FFFFFF"/>
+  <circle cx="60" cy="62" r="34" fill="#D9EEF2"/>
+  <g clip-path="url(#porthole)">
+    <path d="M18 66 C 30 56, 42 56, 54 66 S 78 76, 102 62 L 102 110 L 18 110 Z" fill="#1D8A99"/>
+    <path d="M18 76 C 32 68, 44 68, 58 77 S 82 84, 102 74 L 102 110 L 18 110 Z" fill="#14707E"/>
+  </g>
+  <circle cx="48" cy="50" r="6" fill="#FFFFFF" opacity=".95"/>
+  <circle cx="64" cy="42" r="4" fill="#FFFFFF" opacity=".9"/>
+  <circle cx="74" cy="55" r="3" fill="#FFFFFF" opacity=".85"/>
+  <circle cx="60" cy="62" r="34" fill="none" stroke="#F2A541" stroke-width="3"/>
+  <circle cx="94" cy="26" r="4" fill="#F2A541"/>
+  <circle cx="26" cy="26" r="2.6" fill="#5BB8C4"/>
+</svg>
+</div><b>Lava<span>Fácil</span></b></div>
+  <div class="who">Entrar como<select id="perfil"><option value="gerente">Gerente da lavanderia</option><option value="atendente">Atendente</option><option value="entregador">Entregador</option><option value="plataforma">Administrador da plataforma</option></select></div>
+  <nav id="menu"></nav>
+  <div class="foot">Lavanderia Brilho do Bairro (exemplo)<br>Demonstração com dados fictícios · Projeto A3</div>
+</aside>
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+<script>
+const brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const ST=["Recebido","Lavando","Pronto","Entregue"];const STC={"Recebido":"s-rec","Lavando":"s-lav","Pronto":"s-ok","Entregue":"s-ent"};
+const SERV={"Lavar e passar camisa":14,"Lavagem comum (kg)":12,"Lavagem a seco – terno":48,"Edredom casal":55,"Cortina (m²)":18,"Tênis":35};
+let pedidos=[
+ {id:1042,cli:"Marina Souza",itens:"4 camisas, 2 calças",total:96,st:"Lavando",prev:"12/11"},
+ {id:1043,cli:"Pousada Vila Azul",itens:"12 lençóis, 12 toalhas",total:310,st:"Recebido",prev:"13/11"},
+ {id:1044,cli:"João Pereira",itens:"1 terno (a seco)",total:48,st:"Pronto",prev:"11/11"},
+ {id:1045,cli:"Salão Beleza & Cia",itens:"30 toalhas",total:150,st:"Lavando",prev:"12/11"},
+ {id:1046,cli:"Ana Beatriz",itens:"1 edredom casal",total:55,st:"Entregue",prev:"09/11"}];
+let rotas=[{h:"09:00",t:"Coleta",c:"Marina Souza",e:"R. das Acácias, 120",ok:false},{h:"10:30",t:"Entrega",c:"João Pereira",e:"Av. Brasil, 845 ap. 31",ok:false},{h:"14:00",t:"Coleta",c:"Clínica Sorriso",e:"R. Itapura, 77",ok:false},{h:"16:00",t:"Entrega",c:"Ana Beatriz",e:"R. do Sol, 15",ok:true}];
+let chamados=[{id:7,as:"Etiqueta não imprime",st:"Em andamento",dt:"08/11",r:"Estamos verificando a impressora térmica configurada."},{id:6,as:"Como importar clientes?",st:"Encerrado",dt:"02/11",r:"Veja o tutorial em Ajuda > Importar planilha."}];
+let plano="Profissional";let novo={itens:[]};
+const PLANOS=[{n:"Essencial",p:149,l:["1 unidade","3 usuários","até 500 pedidos/mês"]},{n:"Profissional",p:299,l:["até 3 unidades","10 usuários","até 2.000 pedidos/mês","coleta e entrega com rotas"]},{n:"Rede",p:599,l:["até 10 unidades","30 usuários","pedidos ilimitados","painel consolidado"]}];
+const MENUS={gerente:["painel","pedidos","novo","rotas","suporte","plano"],atendente:["pedidos","novo","suporte"],entregador:["rotas"],plataforma:["plataforma","suporte"]};
+const NOMES={painel:["▦","Painel"],pedidos:["☰","Pedidos"],novo:["＋","Novo pedido"],rotas:["➜","Coleta e entrega"],suporte:["?","Suporte"],plano:["★","Meu plano"],plataforma:["◎","Plataforma"]};
+let tela="painel";
+const $=s=>document.querySelector(s);
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2400)}
+function menu(){const p=$("#perfil").value;const ms=MENUS[p];if(!ms.includes(tela))tela=ms[0];$("#menu").innerHTML=ms.map(k=>`<button class="${k===tela?"on":""}" onclick="ir('${k}')"><span class="i">${NOMES[k][0]}</span>${NOMES[k][1]}</button>`).join("")}
+function ir(k){tela=k;menu();render()}
+const tag=s=>`<span class="tag ${STC[s]||"s-ent"}">${s}</span>`;
+const V={
+painel(){const fat=pedidos.reduce((a,p)=>a+p.total,0),atr=pedidos.filter(p=>p.st!=="Entregue").length;
+ return `<h1>Painel</h1><p class="sub">Visão do dia da lavanderia</p><div class="grid g4">
+ <div class="card kpi"><small>Pedidos em andamento</small><b>${atr}</b><em>+3 hoje</em></div>
+ <div class="card kpi"><small>Faturamento (amostra)</small><b>${brl(fat)}</b><em>▲ 12% vs. semana anterior</em></div>
+ <div class="card kpi"><small>Coletas/entregas hoje</small><b>${rotas.length}</b><em>${rotas.filter(r=>r.ok).length} concluídas</em></div>
+ <div class="card kpi"><small>Estoque abaixo do mínimo</small><b style="color:var(--coral)">2</b><em style="color:var(--coral)">sabão líquido, amaciante</em></div></div>
+ <div class="grid g2" style="margin-top:14px"><div class="card"><b>Faturamento da semana</b><div class="chart" style="margin-bottom:24px">${[["Seg",820],["Ter",940],["Qua",780],["Qui",1100],["Sex",1260],["Sáb",1490]].map(([d,v])=>`<div style="height:${v/1500*100}%"><b>${v}</b><span>${d}</span></div>`).join("")}</div></div>
+ <div class="card"><b>Pedidos por status</b><div style="margin-top:12px">${ST.map(s=>{const n=pedidos.filter(p=>p.st===s).length;return `<div style="margin:10px 0"><div class="row"><span>${s}</span><span class="fix">${n}</span></div><div class="bar"><i style="width:${n/pedidos.length*100}%"></i></div></div>`}).join("")}</div></div></div>`},
+pedidos(){const f=window._f||"Todos";const L=pedidos.filter(p=>f==="Todos"||p.st===f);
+ return `<h1>Pedidos</h1><p class="sub">Acompanhe e atualize o status de cada pedido</p>
+ <div class="card"><div class="row" style="margin-bottom:12px"><select class="fix" style="width:200px" onchange="window._f=this.value;render()">${["Todos",...ST].map(s=>`<option ${s===f?"selected":""}>${s}</option>`).join("")}</select><span></span><button class="b fix" onclick="ir('novo')">Novo pedido</button></div>
+ <table><tr><th>Nº</th><th>Cliente</th><th>Itens</th><th>Previsão</th><th>Total</th><th>Status</th><th></th></tr>
+ ${L.map(p=>`<tr><td>#${p.id}</td><td>${p.cli}</td><td>${p.itens}</td><td>${p.prev}</td><td>${brl(p.total)}</td><td>${tag(p.st)}</td><td>${p.st!=="Entregue"?`<button class="b sm sec" onclick="avancar(${p.id})">Avançar ›</button>`:""}</td></tr>`).join("")}</table></div>`},
+novo(){const tot=novo.itens.reduce((a,i)=>a+i.v*i.q,0);
+ return `<h1>Novo pedido</h1><p class="sub">Registro por peça, com etiqueta QR Code</p><div class="grid g2"><div class="card">
+ <label>Cliente</label><input id="ncli" placeholder="Nome do cliente" value="${novo.cli||""}">
+ <div class="row"><div><label>Serviço</label><select id="nserv">${Object.keys(SERV).map(s=>`<option>${s}</option>`).join("")}</select></div><div class="fix" style="width:90px"><label>Qtd.</label><input id="nqtd" type="number" min="1" value="1"></div><button class="b fix" style="margin-top:26px" onclick="addItem()">Adicionar</button></div>
+ <table style="margin-top:14px"><tr><th>Serviço</th><th>Qtd.</th><th>Subtotal</th></tr>${novo.itens.map(i=>`<tr><td>${i.s}</td><td>${i.q}</td><td>${brl(i.v*i.q)}</td></tr>`).join("")||'<tr><td colspan=3 style="color:var(--mut)">Nenhum item adicionado.</td></tr>'}</table></div>
+ <div class="card"><b>Resumo</b><p style="font-size:34px;margin:10px 0;color:var(--navy);font-weight:700">${brl(tot)}</p><p class="sub">Prazo previsto: 3 dias úteis</p>
+ <label>Pagamento</label><select><option>PIX</option><option>Cartão</option><option>Dinheiro</option><option>Pagar na retirada</option></select>
+ <button class="b" style="width:100%;margin-top:16px" onclick="salvar()">Registrar e gerar etiqueta</button></div></div>`},
+rotas(){return `<h1>Coleta e entrega</h1><p class="sub">Rota do dia · ${rotas.filter(r=>r.ok).length} de ${rotas.length} concluídas</p><div style="max-width:640px">${rotas.map((r,i)=>`<div class="stop ${r.ok?"done":""}"><div class="n">${r.ok?"✓":i+1}</div><div><b>${r.h} · ${r.t}</b><br>${r.c}<br><span style="color:var(--mut);font-size:13px">${r.e}</span></div>${r.ok?"":`<button class="b sm" onclick="concluir(${i})">Confirmar</button>`}</div>`).join("")}</div>`},
+suporte(){return `<h1>Suporte</h1><p class="sub">Abra um chamado e acompanhe as respostas da equipe LavaFácil</p><div class="grid g2"><div class="card"><b>Meus chamados</b><table style="margin-top:8px"><tr><th>Nº</th><th>Assunto</th><th>Status</th></tr>${chamados.map(c=>`<tr><td>#${c.id}</td><td>${c.as}<br><span style="color:var(--mut);font-size:12px">${c.r}</span></td><td><span class="tag ${c.st==="Encerrado"?"s-ent":c.st==="Aberto"?"s-ab":"s-and"}">${c.st}</span></td></tr>`).join("")}</table></div>
+ <div class="card"><b>Novo chamado</b><label>Assunto</label><input id="cas" placeholder="Ex.: dúvida sobre fatura"><label>Descrição</label><textarea id="cds" rows="4"></textarea><button class="b" style="margin-top:12px" onclick="abrir()">Enviar chamado</button><p class="sub" style="margin-top:12px">Atendimento: seg a sex, 8h às 18h</p></div></div>`},
+plano(){return `<h1>Meu plano</h1><p class="sub">Assinatura mensal, sem fidelidade · teste de 14 dias</p><div class="grid g3">${PLANOS.map(p=>`<div class="plan ${p.n===plano?"cur":""}"><h3>${p.n}</h3><div class="pr">${brl(p.p)}<small style="font-size:13px;color:var(--mut)">/mês</small></div><ul>${p.l.map(x=>`<li>${x}</li>`).join("")}</ul>${p.n===plano?'<span class="tag s-pro">Plano atual</span>':`<button class="b sec" onclick="trocar('${p.n}')">Escolher</button>`}</div>`).join("")}</div>
+ <div class="card" style="margin-top:14px"><b>Faturas</b><table><tr><th>Competência</th><th>Valor</th><th>Status</th></tr><tr><td>10/2026</td><td>${brl(PLANOS.find(p=>p.n===plano).p)}</td><td><span class="tag s-ok">Paga</span></td></tr><tr><td>11/2026</td><td>${brl(PLANOS.find(p=>p.n===plano).p)}</td><td><span class="tag s-lav">Em aberto · vence 10/11</span></td></tr></table></div>`},
+plataforma(){const L=[["Brilho do Bairro","Profissional",299,"Ativa"],["Lava Rápido Express","Essencial",149,"Ativa"],["Rede Limpa Mais","Rede",599,"Ativa"],["Espaço Self Wash","Essencial",149,"Teste (9 dias)"],["Seca & Cia","Profissional",299,"Inadimplente"]];const mrr=L.filter(l=>l[3]==="Ativa").reduce((a,l)=>a+l[2],0);
+ return `<h1>Plataforma</h1><p class="sub">Painel da equipe LavaFácil: lavanderias, assinaturas e receita recorrente</p><div class="grid g4"><div class="card kpi"><small>Lavanderias</small><b>${L.length}</b></div><div class="card kpi"><small>Receita recorrente (MRR)</small><b>${brl(mrr)}</b></div><div class="card kpi"><small>Churn do mês</small><b>1,8%</b></div><div class="card kpi"><small>Chamados abertos</small><b>${chamados.filter(c=>c.st!=="Encerrado").length}</b></div></div>
+ <div class="card" style="margin-top:14px"><div class="row" style="margin-bottom:10px"><b>Lavanderias assinantes</b><button class="b fix" onclick="toast('Onboarding: cria o ambiente isolado e inicia o teste de 14 dias')">+ Cadastrar lavanderia</button></div><table><tr><th>Lavanderia</th><th>Plano</th><th>Mensalidade</th><th>Situação</th></tr>${L.map(l=>`<tr><td>${l[0]}</td><td>${l[1]}</td><td>${brl(l[2])}</td><td><span class="tag ${l[3]==="Ativa"?"s-ok":l[3]==="Inadimplente"?"s-ab":"s-lav"}">${l[3]}</span></td></tr>`).join("")}</table></div>`}
+};
+function render(){$("#app").innerHTML=(tela!=="plataforma"&&tela!=="painel"?"":"")+V[tela]()}
+function avancar(id){const p=pedidos.find(x=>x.id===id);p.st=ST[ST.indexOf(p.st)+1];toast(`Pedido #${id} agora está "${p.st}". Cliente notificado.`);render()}
+function addItem(){novo.cli=$("#ncli").value;const s=$("#nserv").value,q=+$("#nqtd").value||1;novo.itens.push({s,q,v:SERV[s]});render()}
+function salvar(){const c=($("#ncli").value||"").trim();if(!c||!novo.itens.length){toast("Informe o cliente e ao menos um item.");return}
+ const id=pedidos[pedidos.length-1].id+1;pedidos.push({id,cli:c,itens:novo.itens.map(i=>i.q+"× "+i.s).join(", "),total:novo.itens.reduce((a,i)=>a+i.v*i.q,0),st:"Recebido",prev:"15/11"});novo={itens:[]};toast(`Pedido #${id} registrado. Etiqueta QR Code gerada.`);ir("pedidos")}
+function concluir(i){rotas[i].ok=true;toast("Confirmado. Cliente notificado.");render()}
+function abrir(){const a=$("#cas").value.trim();if(!a){toast("Informe o assunto.");return}chamados.unshift({id:chamados[0].id+1,as:a,st:"Aberto",dt:"hoje",r:"Recebido. Responderemos em até 1 dia útil."});toast("Chamado enviado ao suporte.");render()}
+function trocar(n){plano=n;toast(`Plano alterado para ${n}. Cobrança atualizada no próximo ciclo.`);render()}
+$("#perfil").addEventListener("change",()=>{menu();render()});menu();render();
+</script></body></html>
